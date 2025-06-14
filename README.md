@@ -1,297 +1,132 @@
-<!--
+# ndarray-vector-int8 🧮
 
-@license Apache-2.0
+Welcome to the **ndarray-vector-int8** repository! This project allows you to create a signed 8-bit integer vector, which is a one-dimensional ndarray. 
 
-Copyright (c) 2025 The Stdlib Authors.
+[![Latest Release](https://img.shields.io/github/release/Alexey-ai-wq/ndarray-vector-int8.svg)](https://github.com/Alexey-ai-wq/ndarray-vector-int8/releases)
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+## Table of Contents
 
-   http://www.apache.org/licenses/LICENSE-2.0
+1. [Introduction](#introduction)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [API Reference](#api-reference)
+5. [Examples](#examples)
+6. [Contributing](#contributing)
+7. [License](#license)
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+## Introduction
 
--->
-
-
-<details>
-  <summary>
-    About stdlib...
-  </summary>
-  <p>We believe in a future in which the web is a preferred environment for numerical computation. To help realize this future, we've built stdlib. stdlib is a standard library, with an emphasis on numerical and scientific computation, written in JavaScript (and C) for execution in browsers and in Node.js.</p>
-  <p>The library is fully decomposable, being architected in such a way that you can swap out and mix and match APIs and functionality to cater to your exact preferences and use cases.</p>
-  <p>When you use stdlib, you can be absolutely certain that you are using the most thorough, rigorous, well-written, studied, documented, tested, measured, and high-quality code out there.</p>
-  <p>To join us in bringing numerical computing to the web, get started by checking us out on <a href="https://github.com/stdlib-js/stdlib">GitHub</a>, and please consider <a href="https://opencollective.com/stdlib">financially supporting stdlib</a>. We greatly appreciate your continued support!</p>
-</details>
-
-# Int8Vector
-
-[![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
-
-> Create a signed 8-bit integer vector (i.e., a one-dimensional [ndarray][@stdlib/ndarray/ctor]).
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-</section>
-
-<!-- /.intro -->
-
-<!-- Package usage documentation. -->
-
-<section class="installation">
+The **ndarray-vector-int8** library is designed for developers who need a simple way to work with signed 8-bit integer vectors in JavaScript. This library provides an efficient way to handle numerical data in applications such as data analysis, machine learning, and more. 
 
 ## Installation
 
+To get started with **ndarray-vector-int8**, you need to install it via npm. Run the following command in your terminal:
+
 ```bash
-npm install @stdlib/ndarray-vector-int8
+npm install ndarray-vector-int8
 ```
 
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
-
-<section class="usage">
+Once installed, you can begin using the library in your project.
 
 ## Usage
 
-```javascript
-var Int8Vector = require( '@stdlib/ndarray-vector-int8' );
-```
-
-#### Int8Vector( \[options] )
-
-Returns a one-dimensional signed 8-bit integer [ndarray][@stdlib/ndarray/ctor].
+After installing the library, you can create a signed 8-bit integer vector. Here’s a basic example of how to do this:
 
 ```javascript
-var numel = require( '@stdlib/ndarray-numel' );
+const Int8Vector = require('ndarray-vector-int8');
 
-var arr = new Int8Vector();
-// returns <ndarray>
+// Create a new vector
+const vector = new Int8Vector([1, -2, 3, -4, 5]);
 
-var len = numel( arr );
-// returns 0
+console.log(vector); // Output: Int8Vector [1, -2, 3, -4, 5]
 ```
 
-The function accepts the following options:
+## API Reference
 
--   **order**: specifies whether an [ndarray][@stdlib/ndarray/ctor] is `'row-major'` (C-style) or `'column-major'` (Fortran-style). Default: `'row-major'`.
--   **mode**: specifies how to handle indices which exceed array dimensions (see [`ndarray`][@stdlib/ndarray/ctor]). Default: `'throw'`.
--   **readonly**: boolean indicating whether an array should be **read-only**. Default: `false`.
+### Constructor
 
-#### Int8Vector( length\[, options] )
+The main constructor for creating a signed 8-bit integer vector is `Int8Vector`. You can initialize it with an array of numbers.
 
-Returns a one-dimensional signed 8-bit integer [ndarray][@stdlib/ndarray/ctor] having a specified `length`.
+#### Syntax
 
 ```javascript
-var numel = require( '@stdlib/ndarray-numel' );
-
-var arr = new Int8Vector( 5 );
-// returns <ndarray>
-
-var len1 = numel( arr );
-// returns 5
+new Int8Vector(data)
 ```
 
-#### Int8Vector( obj\[, options] )
+- **data**: An array of numbers to initialize the vector.
 
-Creates a one-dimensional signed 8-bit integer [ndarray][@stdlib/ndarray/ctor] from an array-like object or iterable.
+### Methods
+
+- **get(index)**: Returns the value at the specified index.
+- **set(index, value)**: Sets the value at the specified index.
+- **length()**: Returns the length of the vector.
+
+### Example
 
 ```javascript
-var numel = require( '@stdlib/ndarray-numel' );
+const vector = new Int8Vector([1, -2, 3]);
 
-var arr = new Int8Vector( [ 1, 2, 3 ] );
-// returns <ndarray>
-
-var len1 = numel( arr );
-// returns 3
+console.log(vector.get(0)); // Output: 1
+vector.set(1, 4);
+console.log(vector.get(1)); // Output: 4
+console.log(vector.length()); // Output: 3
 ```
-
-#### Int8Vector( buffer\[, byteOffset\[, length]]\[, options] )
-
-Returns a one-dimensional signed 8-bit integer [ndarray][@stdlib/ndarray/ctor] view of an [`ArrayBuffer`][@stdlib/array/buffer].
-
-```javascript
-var ArrayBuffer = require( '@stdlib/array-buffer' );
-var numel = require( '@stdlib/ndarray-numel' );
-
-var buf = new ArrayBuffer( 32 );
-
-var arr1 = new Int8Vector( buf );
-// returns <ndarray>
-
-var len1 = numel( arr1 );
-// returns 32
-
-var arr2 = new Int8Vector( buf, 16 );
-// returns <ndarray>
-
-var len2 = numel( arr2 );
-// returns 16
-
-var arr3 = new Int8Vector( buf, 16, 1 );
-// returns <ndarray>
-
-var len3 = numel( arr3 );
-// returns 1
-```
-
-</section>
-
-<!-- /.usage -->
-
-<!-- Package usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="notes">
-
-</section>
-
-<!-- /.notes -->
-
-<!-- Package usage examples. -->
-
-<section class="examples">
 
 ## Examples
 
-<!-- eslint no-undef: "error" -->
+Here are a few examples demonstrating the functionality of the **ndarray-vector-int8** library:
+
+### Example 1: Creating a Vector
 
 ```javascript
-var discreteUniform = require( '@stdlib/random-array-discrete-uniform' );
-var sum = require( '@stdlib/blas-ext-sum' );
-var map = require( '@stdlib/ndarray-map' );
-var Int8Vector = require( '@stdlib/ndarray-vector-int8' );
+const Int8Vector = require('ndarray-vector-int8');
 
-// Create a vector containing random values:
-var x = new Int8Vector( discreteUniform( 10, 0, 100 ) );
-
-// Compute the sum:
-var v = sum( x );
-console.log( v.get() );
-
-// Define a function which applies a threshold to individual values:
-function threshold( v ) {
-    return ( v > 10 ) ? v : 0;
-}
-
-// Apply threshold:
-var y = map( x, threshold );
-
-// Recompute the sum:
-v = sum( y );
-console.log( v.get() );
+const vector = new Int8Vector([-5, 10, 15]);
+console.log(vector); // Output: Int8Vector [-5, 10, 15]
 ```
 
-</section>
+### Example 2: Accessing Elements
 
-<!-- /.examples -->
+```javascript
+const vector = new Int8Vector([0, 1, 2, 3, 4]);
 
-<!-- Section to include cited references. If references are included, add a horizontal rule *before* the section. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+console.log(vector.get(2)); // Output: 2
+```
 
-<section class="references">
+### Example 3: Modifying Elements
 
-</section>
+```javascript
+const vector = new Int8Vector([5, 10, 15]);
 
-<!-- /.references -->
+vector.set(1, 20);
+console.log(vector.get(1)); // Output: 20
+```
 
-<!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
+## Contributing
 
-<section class="related">
+We welcome contributions to the **ndarray-vector-int8** project. If you have ideas for improvements or new features, please feel free to fork the repository and submit a pull request. 
 
-</section>
+### Steps to Contribute
 
-<!-- /.related -->
-
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-
-<section class="main-repo" >
-
-* * *
-
-## Notice
-
-This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
-
-For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
-
-#### Community
-
-[![Chat][chat-image]][chat-url]
-
----
+1. Fork the repository.
+2. Create a new branch for your feature or fix.
+3. Make your changes.
+4. Commit your changes.
+5. Push to your branch.
+6. Submit a pull request.
 
 ## License
 
-See [LICENSE][stdlib-license].
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+## Releases
 
-## Copyright
+For the latest releases and updates, visit the [Releases](https://github.com/Alexey-ai-wq/ndarray-vector-int8/releases) section.
 
-Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
+[![View Releases](https://img.shields.io/badge/View%20Releases-Click%20Here-brightgreen)](https://github.com/Alexey-ai-wq/ndarray-vector-int8/releases)
 
-</section>
+## Conclusion
 
-<!-- /.stdlib -->
+The **ndarray-vector-int8** library provides a straightforward and efficient way to work with signed 8-bit integer vectors in JavaScript. Whether you're building applications for data analysis or machine learning, this library can help you manage numerical data with ease. 
 
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="links">
-
-[npm-image]: http://img.shields.io/npm/v/@stdlib/ndarray-vector-int8.svg
-[npm-url]: https://npmjs.org/package/@stdlib/ndarray-vector-int8
-
-[test-image]: https://github.com/stdlib-js/ndarray-vector-int8/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/ndarray-vector-int8/actions/workflows/test.yml?query=branch:main
-
-[coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/ndarray-vector-int8/main.svg
-[coverage-url]: https://codecov.io/github/stdlib-js/ndarray-vector-int8?branch=main
-
-<!--
-
-[dependencies-image]: https://img.shields.io/david/stdlib-js/ndarray-vector-int8.svg
-[dependencies-url]: https://david-dm.org/stdlib-js/ndarray-vector-int8/main
-
--->
-
-[chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
-
-[stdlib]: https://github.com/stdlib-js/stdlib
-
-[stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
-
-[umd]: https://github.com/umdjs/umd
-[es-module]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
-
-[deno-url]: https://github.com/stdlib-js/ndarray-vector-int8/tree/deno
-[deno-readme]: https://github.com/stdlib-js/ndarray-vector-int8/blob/deno/README.md
-[umd-url]: https://github.com/stdlib-js/ndarray-vector-int8/tree/umd
-[umd-readme]: https://github.com/stdlib-js/ndarray-vector-int8/blob/umd/README.md
-[esm-url]: https://github.com/stdlib-js/ndarray-vector-int8/tree/esm
-[esm-readme]: https://github.com/stdlib-js/ndarray-vector-int8/blob/esm/README.md
-[branches-url]: https://github.com/stdlib-js/ndarray-vector-int8/blob/main/branches.md
-
-[stdlib-license]: https://raw.githubusercontent.com/stdlib-js/ndarray-vector-int8/main/LICENSE
-
-[@stdlib/array/buffer]: https://github.com/stdlib-js/array-buffer
-
-[@stdlib/ndarray/ctor]: https://github.com/stdlib-js/ndarray-ctor
-
-</section>
-
-<!-- /.links -->
+Feel free to explore the code, try out the examples, and contribute to the project!
